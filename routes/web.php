@@ -43,3 +43,7 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 
 Route::get('/home2', [EventsController::class, 'index'])->middleware('auth');
 Route::post('/home/update/{id}', [EventsController::class, 'store'])->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -59,7 +59,13 @@ class EventsController extends Controller
         return back()->withInput()->with('success', 'Registro actualizado');
     }
 
-    public function destroy(Events $events)
+    public function destroy($id)
     {
+        $event=Events::findOrfail($id);
+        if(Storage::delete('public/'.$event->showEvent)){
+           Events::destroy($id);
+        }
+    
+        return redirect('events')->with('mensaje','Events Borrado');
     }
 }
