@@ -24,18 +24,17 @@ class EventsController extends Controller
     public function index()
     {
         $events = Events::all();
-        return View::make('home',['events' => $events]);
-        
+        return View::make('home', ['events' => $events]);
     }
     public function indexProfile()
     {
         $events = Events::all();
-        return View::make('profile',['events' => $events]);
-        
+        return View::make('profile', ['events' => $events]);
     }
 
-    public function show( Request $request){
-        return $request ;
+    public function show(Request $request)
+    {
+        return View::make('showEvent', ['event' => $request]);
     }
 
     public function store(Request $request)
@@ -43,7 +42,18 @@ class EventsController extends Controller
         $event = new Events();
         $event->title  = $request->title;
         $event->description  = $request->description;
-        $event->url_img  = $request->url_img;
+
+
+        // verifica si el formulario tenía el campo " url_img "
+        if ($request->hasFile('url_img')) {
+            $file = $request->file('url_img');
+            $destinationPath = 'images/featureds/';
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $uploadSucces = $request->file('url_img')->move($destinationPath, $fileName);
+            $event->url_img  = $destinationPath . $fileName;
+        } else {
+            $event->url_img  = 'noFoto';
+        }
         $event->max_participants  = $request->max_participants;
         $event->outstanding  = $request->outstanding;
         $event->fecha  = $request->fecha;
@@ -52,18 +62,10 @@ class EventsController extends Controller
         return back()->withInput()->with('success', 'Registro Creado');
     }
 
-    public function update(UpdateEventsRequest $request )
+    public function update(UpdateEventsRequest $request)
     {
-        $event = Events::FindOrFail($request->id);
-        $event->title  = $request->title;
-        $event->description  = $request->description;
-        $event->url_img  = $request->url_img;
-        $event->max_participants  = $request->max_participants;
-        $event->outstanding  = $request->outstanding;
-        $event->fecha  = $request->fecha;
-        $event->hora  = $request->hora;
-        $event->save();
         
+
         return back()->withInput()->with('success', 'Registro actualizado');
     }
 
