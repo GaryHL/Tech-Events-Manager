@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Events;
 use App\Http\Requests\StoreEventsRequest;
 use App\Http\Requests\UpdateEventsRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class EventsController extends Controller
 {
@@ -21,72 +23,51 @@ class EventsController extends Controller
      */
     public function index()
     {
-        //
+        $events = Events::all();
+        return View::make('home',['events' => $events]);
+        
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function indexProfile()
     {
-        //
+        $events = Events::all();
+        return View::make('profile',['events' => $events]);
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreEventsRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreEventsRequest $request)
+    public function show( Request $request){
+        return $request ;
+    }
+
+    public function store(Request $request)
     {
-        //
+        $event = new Events();
+        $event->title  = $request->title;
+        $event->description  = $request->description;
+        $event->url_img  = $request->url_img;
+        $event->max_participants  = $request->max_participants;
+        $event->outstanding  = $request->outstanding;
+        $event->fecha  = $request->fecha;
+        $event->hora  = $request->hora;
+        $event->save();
+        return back()->withInput()->with('success', 'Registro Creado');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Events  $events
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Events $events)
+    public function update(UpdateEventsRequest $request )
     {
-        //
+        $event = Events::FindOrFail($request->id);
+        $event->title  = $request->title;
+        $event->description  = $request->description;
+        $event->url_img  = $request->url_img;
+        $event->max_participants  = $request->max_participants;
+        $event->outstanding  = $request->outstanding;
+        $event->fecha  = $request->fecha;
+        $event->hora  = $request->hora;
+        $event->save();
+        
+        return back()->withInput()->with('success', 'Registro actualizado');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Events  $events
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Events $events)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateEventsRequest  $request
-     * @param  \App\Models\Events  $events
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateEventsRequest $request, Events $events)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Events  $events
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Events $events)
     {
-        //
     }
 }

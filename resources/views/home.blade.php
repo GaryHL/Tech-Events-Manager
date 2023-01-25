@@ -18,12 +18,17 @@
 </head>
 
 <body class="antialiased">
-    <h1>test</h1>
-    {{-- <form action='home2'>
-        <button type='submit'> pull</button>
-    </form> --}}    
-
-
+    <h1>Home</h1>
+    <hr>
+    <h1>*Slider*</h1>
+    <hr>
+    <h1>Event - List</h1>
+    <ul>
+        @foreach ($events as $event)
+            <li>Title: {{$event->title}}</li>
+        @endforeach
+    </ul>
+    <a href="profile">Perfil</a>
 </body>
 
 </html>
