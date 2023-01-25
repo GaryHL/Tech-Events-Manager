@@ -9,14 +9,6 @@
             <label>Name:</label>
             <input autofocus="autofocus" type="name" name="name" value="{{old('name')}}">
         </div>
-        {{-- <div>
-            <label>Lastname:</label>
-            <input type="lastname" name="lastname" value="{{old('lastname')}}" >
-        </div>
-        <div>
-            <label>Usernamne:</label>
-            <input type="username" name="user" value="{{old('username')}}" >
-        </div> --}}
         <div>
             <label>Email:</label>
             <input type="email" name="email" value="{{old('email')}}" >
@@ -30,7 +22,7 @@
             <input type="password" name="password_confirmation"  >
         </div>
     </div>
-
+ 
     <div>
         <a href="{{route('login')}}">Login</a>
         <button type="submit">Register</button>
