@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             
             $table->string('title',255);
-            $table->text('descripcion');
+            $table->string('description');
             $table->string('url_img');
             $table->integer('max_participants');
-            $table->boolean('outstanding');
-            $table->dateTime('fecha');
-            $table->dateTime('hora');
+            $table->string('outstanding');
+            $table->date('fecha');
+            $table->time('hora');
             $table->timestamps();
         });
     }
@@ -37,3 +37,6 @@ return new class extends Migration
         Schema::dropIfExists('events');
     }
 };
+// slider
+// Se pueden apuntar solo una vez
+// los usuarios pueden ver una lista de sus eventos
