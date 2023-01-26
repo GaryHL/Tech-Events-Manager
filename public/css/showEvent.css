@@ -51,7 +51,6 @@
     background-color: transparent;
     color:#08D698;
     margin-top: 1rem;
-    width: 100%;
 }
 
 .btn_actualizar:hover{
@@ -238,7 +237,6 @@
     background-color: transparent;
     color:#D60846;
     margin-top: 1rem;
-    width: 100%;
 }
 
 .btn_delete:hover{
@@ -254,7 +252,6 @@
     background-color: transparent;
     color:#08D698;
     margin-top: 1rem;
-    width: 100%;
 }
 
 .btn_green:hover{
