@@ -1,54 +1,145 @@
-<h1>Detalles del evento</h1>
-<hr>
-<h5>Event_id: {{ $event->id }}</h5>
-<p>Titulo:{{ $event->title }}</p>
-<p>Descripción: {{ $event->description }}</p>
-<p>Fecha: {{ $event->fecha }}</p>
-<p>Hora: {{ $event->hora }}</p>
+<!DOCTYPE html>
+<html lang="en">
 
-<form action="/events/destroy/{{ $event->id }}" method='POST'>
-    @method('DELETE')
-    @csrf
-    <button type="submit">Borrar este evento</button>
-</form>
-<form action="/events/tickets/store" method="POST">
-    @if (session()->has('message'))
-        <div class="alert alert-danger">
-            {{ session()->get('message') }}
-        </div>  
-    @endif
-    @csrf
-    <input type="text" name="user_id" value={{ $user->id }} style="position:absolute; opacity:0; top:0; ">
-    <input type="text" name="event_id" value={{ $event->id }} style="position:absolute; opacity:0; top:0; ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event</title>
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link href="{{ asset('css/showEvent.css') }}" rel="stylesheet">
+</head>
 
-    <input type="submit" value="Inscribirse al evento">
+<body>
+    <h1 class="title">Detalles del evento: {{ $event->title }}</h1>
+    <div class="info_event">
+        <img src="/{{ $event->url_img }}" class="img_event" alt="">
+        <div class="details_event">
+            <h3>Descripción: </h3>
+            <p>{{ $event->description }}</p>
+            <p>Nombre del evento: {{ $event->title }}</p>
+            <p>Fecha: {{ $event->fecha }}</p>
+            <p>Hora: {{ $event->hora }}</p>
+            <form action="/events/tickets/store" method="POST">
+                @if (session()->has('message'))
+                    <div class="alert">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
+                @csrf
+                <input type="text" name="user_id" value={{ $user->id }}
+                    style="position:absolute; opacity:0; top:0; ">
+                <input type="text" name="event_id" value={{ $event->id }}
+                    style="position:absolute; opacity:0; top:0; ">
+                <button type="submit" class="btn_inscribirse">Inscribirse al evento</button>
 
-</form>
-<hr>
-<h4>Editar este evento</h4>
-<form action="{{route('events/update', $event->id)}}" method="post" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
-    <input type='text' name='title' placeholder="title" required />
-    <input type='text' name='description' placeholder="description" required />
-    <input type='file' name='url_img' placeholder="imagen" >
-    {{-- <input type='text' name='url_img' placeholder="url" required /> --}}
-    <input type='test' name='max_participants' placeholder="Max-participants" required />
-    {{-- <input type='number' name='outstanding' placeholder="Outstanding" required /> --}}
-    <label > Outsanding </label><select name='outstanding' required>
-        <option value="yes">si</option>
-        <option value="no">no</option>
-    </select>
-    <input type='text' name='link' placeholder="link" required />
-    <input type='date' name='fecha' placeholder="Fecha" required />
-    <input type='time' name='hora' placeholder="Hora" required />
-    <button type='submit'> pull</button>
-</form>
+            </form>
+        </div>
+
+    </div>
+    <br>
+    <p style="color: #D60846">Si no eres admin no edites el evento por favor y gracias.</p>
+    <br>
+    <h4>Editar Evento:</h4>
+
+    <form action="{{ route('events/update', $event->id) }}" method="post" enctype="multipart/form-data"
+        class="form_edit">
+        @csrf
+        @method('PUT')
+
+        <div class="container_inputs">
+            <div class="group">
+                <input type='text' name='title' required class="input" />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Titulo</label>
+            </div>
+            <div class="group">
+                <input type='text' name='description' required class="input" />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Descripción</label>
+            </div>
+            <div class="group">
+                <p style="opacity:0.8">Img:</p>
+                <input type='file' name='url_img' required class="input" />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="group">
+                <input type='number' name='max_participants' required class="input" />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Max-participants</label>
+            </div>
+
+            <div class="group">
+                <p style="opacity:0.8">Relevante?</p>
+                <br>
+                <select name='outstanding' required>
+                    <option value="yes">si</option>
+                    <option value="no">no</option>
+                </select>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+
+            <div class="group">
+                <input type='text' name='link' required class="input" />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Link de la reunión</label>
+            </div>
+
+            <div class="group">
+                <p style="opacity:0.8">Fecha:</p>
+                <br>
+                <input type='date' name='fecha' placeholder="Fecha" required />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="group">
+                <p style="opacity:0.8">Hora:</p>
+                <br>
+                <input type='time' name='hora' placeholder="Hora" required />
+                <span class="highlight"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+        <div class="" style="display:grid-template-columns:auto"></div>
+        <button type='submit' class="btn_actualizar"> Actualizar el evento</button>
+    </form>
+    <form action="/events/destroy/{{ $event->id }}" method='POST'>
+        @method('DELETE')
+        @csrf
+        <button type="submit" class="btn_delete">Borrar este evento</button>
+    </form>
 
 
+    <nav class="navbar">
+        <a href="/home">
+            <lord-icon src="https://cdn.lordicon.com/gmzxduhd.json" trigger="hover" class="iconNav"
+                colors="primary:#ffffff,secondary:#ffffff">
+            </lord-icon>
+        </a>
+        <a href="/events">
+            <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="hover" class="iconNav"
+                colors="primary:#ffffff,secondary:#ffffff">
+            </lord-icon>
+        </a>
+        <a href="/profile">
+            <lord-icon src="https://cdn.lordicon.com/imamsnbq.json" trigger="hover" class="iconNav"
+                colors="primary:#ffffff,secondary:#ffffff">
+            </lord-icon>
+        </a>
+        <a href="/events/tickets/myTickets">
+            <lord-icon src="https://cdn.lordicon.com/cjieiyzp.json" colors="primary:#ffffff,secondary:#ffffff"
+                class="iconNav" trigger="hover"> </lord-icon>
+        </a>
+    </nav>
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
 
 
-{{-- <a href="/events/destroy/{{ $event->id }}">Eliminar</a> --}}
-<hr>
-<a href="/events">Volver a la lista de eventos</a>
-<a href="/home">Volver a home</a>
+</body>
+
+</html>
