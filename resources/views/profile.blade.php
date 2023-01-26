@@ -68,14 +68,14 @@
             <div class="group">
                 <p style="opacity:0.8">Fecha:</p>
                 <br>
-                <input type='date' name='fecha' placeholder="Fecha" required />
+                <input type='date' name='fecha' placeholder="Fecha" required  class="input_time"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
             </div>
             <div class="group">
                 <p style="opacity:0.8">Hora:</p>
                 <br>
-                <input type='time' name='hora' placeholder="Hora" required />
+                <input type='time' name='hora' placeholder="Hora" required  class="input_time"/>
                 <span class="highlight"></span>
                 <span class="bar"></span>
             </div>
