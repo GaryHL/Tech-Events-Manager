@@ -1,0 +1,95 @@
+.container_event_list{
+    margin:2rem 0 ;
+}
+
+.list{
+    list-style: none;
+    width: 100%;
+    padding: 0;
+}
+
+.list>li{
+    margin:2rem 0;
+}
+.list>li:hover{
+    scale:1.02
+}
+
+a{
+    text-decoration: none;
+    outline: none;
+    color:white;
+}
+.card_event{
+    border-radius:10px;
+    display:grid;
+    grid-template-columns: 4fr 6fr 2fr;
+    grid-gap: 1rem;
+  }
+.card_event:hover{
+    background-color: #30303031;
+}
+
+.img_card{
+    object-fit: cover;
+    width: 100%;
+}
+.info_event{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.container_icon{
+    display: flex;
+    flex-direction: row;
+    justify-content:right;
+    gap:1rem;
+    padding:0.5rem;
+}
+
+.place{
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    overflow: hidden;
+}
+
+.date_event{
+    color:#08D698; 
+    margin-right:1rem;  
+}
+
+
+.navbar{
+    width:90%;
+    bottom: 0;
+    position:fixed;
+    height:10vh;
+    display: flex;
+    justify-content: space-between;
+    background-color:#0D0D0D ;
+    align-items: center;
+}
+.iconNav:hover{
+    scale:2;  
+}
+.iconNav:hover{
+    scale:1.5;  
+}
+
+.btn_delete{
+    padding: 1rem 1rem;
+    border-radius: 99vh;
+    border:2px solid #D60846;
+    background-color: transparent;
+    color:#D60846;
+    margin-top: 1rem;
+    width: 100%;
+    height: 3rem;
+}
+
+.btn_delete:hover{
+    color: black;
+    background-color: #D60846;
+    cursor: pointer; 
+}
