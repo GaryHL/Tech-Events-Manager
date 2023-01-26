@@ -60,24 +60,46 @@
                                     data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
-                        </div>
 
-                        <hr>
-                        <h1>Lista de eventos</h1>
-                        <ul>
-                            {{-- @foreach ($events as $event)
+                                    <body>
+                                        <h1>Home</h1>
+                                        <hr>
+                                        <p>Eventos destacados:</p>
+                                        <div class="container_carousel">
+                                            <div id="carouselExample" class="carousel slide"
+                                                style="width:600px; background-color:rgb(226, 226, 226); border:2px solid black">
+                                                <div class="carousel-inner">
+                                                    @foreach ($events as $event)
+                                                    @if ($event->outstanding === 'yes')
+                                                    <div class="carousel-item active">
+                                                        <img class="d-block w-100" src={{ $event->url_img }}
+                                                            class='img'>
+                                                        <div style='padding:0 1rem'>
+
+                                                            <h5>{{ $event->title }}</h5>
+                                                            <p>{{ $event->description }}</p>
+                                                            <p>{{ $event->fecha }}</p>
+                                                            <p>{{ $event->hora }}</p>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <hr>
+                                                    <h1>Lista de eventos</h1>
+                                                    <ul>
+                                                        {{-- @foreach ($events as $event)
             <li>Title: {{ $event->title }}</li>
-                            @endforeach --}}
-                        </ul>
-                        <a href="profile">Perfil</a>
+                                                        @endforeach --}}
+                                                    </ul>
+                                                    <a href="profile">Perfil</a>
+                                                    <a href="events">Ver todos los eventos</a>
+                                                    <a href="/events/tickets/myTickets">Mis tickets</a>
 
-                        <script
-                            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-                            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-                            crossorigin="anonymous">
-                        </script>
-                    </body>
+                                                    <script
+                                                        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+                                                        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+                                                        crossorigin="anonymous">
+                                                    </script>
+                                    </body>
 
-                    </html>
+                                    </html>
