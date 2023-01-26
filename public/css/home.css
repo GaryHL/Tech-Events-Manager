@@ -1,0 +1,159 @@
+.container_cards {
+    display: flex;
+    flex-direction: row;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid black;
+    padding: 1rem;
+    max-width: 200px;
+    margin: 0 1rem;
+}
+
+.img {
+    width: 80%;
+    border: 2px solid;
+}
+.container_carousel {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container_home{
+    color:white;
+    background-color:#0D0D0D ;
+    min-height: 100vh;
+    width:100%;
+    padding:0% 5%;
+    position: relative;
+}
+
+.title{
+    font-weight: 800;
+    padding-top:2rem;
+}
+.container_carousel{
+    margin: 2rem 0 ;
+}
+.subtitle{
+    margin:1.4rem 0;
+}
+.navbar{
+    width:90%;
+    padding:0 5%;
+    bottom: 0;
+    position: absolute;
+    height:10vh;
+    display: flex;
+    justify-content: space-between;
+    background-color:#0D0D0D ;
+    align-items: center;
+}
+/* carrousel */
+
+.slideshow-container{
+ max-width: 700px;
+ position:relative;
+ margin:auto;
+}
+.mySlides{
+ display:none;
+ position: relative;
+}
+
+.prev, .next{
+ cursor:pointer;
+ position:absolute;
+ top:50%;
+ width:auto;
+ margin-top:-22px;
+ padding:16px;
+ color:white;
+ font-weight:bold;
+ font-size:18px;
+ transition:0.6s ease;
+ border-radius:0 3px 3px 0;
+}
+
+.next{
+ right:0;
+ border-radius:3px 0 0 3px;
+}
+
+.img_carousel{
+    width:100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+
+}
+
+.prev:hover, .next:hover{
+ background-color:rgba(0,0,0,0.8);
+}
+
+.text{
+ color:#f2f2f2;
+ font-size:15px;
+ padding:8px 12px;
+ position:absolute;
+ bottom:8px;
+ width:100%;
+ text-align:center;
+}
+
+.numbertext{
+ color:#f2f2f2;
+ font-size:12px;
+ padding:8px 12px;
+ position:absolute;
+ top:0;
+}
+
+.fade{
+ -webkit-animation-name:fade;
+ -webkit-animation-duration:3s;
+ animation-name:fade;
+ animation-duration:3s;
+}
+
+@-webkit-keyframes fade{
+    0%{
+        opacity:0
+    }
+    5%{
+        opacity: 0.4;
+    }
+    85%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+@keyframes fade{
+    0%{
+        opacity:0
+    }
+    5%{
+        opacity: 0.4;
+    }
+    85%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+.iconNav:hover{
+    scale:2;  
+}
+.iconNav:hover{
+    scale:1.5;  
+}
