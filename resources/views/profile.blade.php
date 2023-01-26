@@ -15,16 +15,11 @@
         <option value="yes">si</option>
         <option value="no">no</option>
     </select>
+    <input type='text' name='link' placeholder="link" required />
     <input type='date' name='fecha' placeholder="Fecha" required />
     <input type='time' name='hora' placeholder="Hora" required />
     <button type='submit'> pull</button>
 </form>
-<h2>Actualizar un evento</h2>
-
-{{-- Editar un evento
-@foreach ($events as $event)
-    <a href={{ 'event/show/' }}>{{ $event->title }}</a>
-@endforeach --}}
 
 <a href="home">volver a home</a>
 <form action='/logout' method='post'>

@@ -54,17 +54,33 @@ class EventsController extends Controller
         }
         $event->max_participants  = $request->max_participants;
         $event->outstanding  = $request->outstanding;
+        $event->link  = $request->link;
         $event->fecha  = $request->fecha;
         $event->hora  = $request->hora;
         $event->save();
         return back()->withInput()->with('success', 'Registro Creado');
     }
 
-    public function update(UpdateEventsRequest $request)
+    public function update(Request $request, $id)
     {
+        $event = Events::find($id);
+        $event->title  = $request->title;
+        $event->description  = $request->description;
 
-
-        return back()->withInput()->with('success', 'Registro actualizado');
+        if ($request->hasFile('url_img')) {
+            $file = $request->file('url_img');
+            $destinationPath = 'images/featureds/';
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $uploadSucces = $request->file('url_img')->move($destinationPath, $fileName);
+            $event->url_img  = $destinationPath . $fileName;
+        }
+        $event->max_participants  = $request->max_participants;
+        $event->outstanding  = $request->outstanding;
+        $event->link  = $request->link;
+        $event->fecha  = $request->fecha;
+        $event->hora  = $request->hora;
+        $event->save();
+        return back()->withInput()->with('success', 'Registro Actualizado');
     }
 
     public function destroy($id)

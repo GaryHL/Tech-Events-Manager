@@ -50,6 +50,7 @@ Route::get('/events/{event}', 'App\Http\Controllers\EventsController@show');
 
 Route::delete('/events/destroy/{event}', 'App\Http\Controllers\EventsController@destroy');
 
+Route::put('/events/update/{id}', 'App\Http\Controllers\EventsController@update')->name('events/update');
 
 // Tickets (relation)
 

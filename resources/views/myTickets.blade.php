@@ -10,11 +10,14 @@
 
 <body>
     <h1>Mis tickets:</h1>
+    <hr>
     <ul>
         @foreach ($events as $event)
-            <li>{{ $event->title }}</li>
+        <li>{{ $event->title }} <a href="{{$event -> link}}">LInk de la reunión</a></li>
         @endforeach
     </ul>
+    <hr>
+    <a href="/home">Volver a home</a>
 </body>
 
 </html>
