@@ -29,6 +29,11 @@ Route::get('/event/show/{id}', [EventsController::class, 'show'])->name('show')-
 Route::post('/event/post', [EventsController::class, 'store'])->middleware('auth');
 
 
+Route::get('/edit/{id}', [EventsController::class, 'edit'])->middleware('auth');
+
+Route::put('/edit/update/{id}', [EventsController::class, 'update'])->middleware('auth');
+
+
 
 
 Route::view('/login', 'auth.login')->name('login')->middleware('guest')->middleware('guest');
