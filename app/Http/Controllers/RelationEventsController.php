@@ -25,10 +25,10 @@ class RelationEventsController extends Controller
             $event->users()->attach($user);
             return view('myTickets', compact('user', 'event'));
         }else{
-            return redirect()->back()->with('message','Ya se ha inscrito a este evento');
+            return redirect()->back()->with('message','no puedes inscribirte dos veces');
         }
         
 
-        return redirect('/events/tickets/myTickets');
+        return redirect()->back()->with('message','Te has inscrito correctamente');
     }
 }

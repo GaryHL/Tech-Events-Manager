@@ -7,81 +7,79 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        .container_cards {
-            display: flex;
-            flex-direction: row;
-        }
 
-        .card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: 2px solid black;
-            padding: 1rem;
-            max-width: 200px;
-            margin: 0 1rem;
-        }
-
-        .img {
-            width: 80%;
-            border: 2px solid;
-        }
-        .container_carousel{
-            width:100%;
-            display:flex;
-            justify-content: center;
-        }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 </head>
 
-<body>
-    <h1>Home</h1>
-    <hr>
-    <p>Eventos destacados:</p>
-    <div class="container_carousel">
-        <div id="carouselExample" class="carousel slide" style="width:600px; background-color:rgb(226, 226, 226); border:2px solid black">
-            <div class="carousel-inner">
-                @foreach ($events as $event)
-                    @if ($event->outstanding === 'yes')
-                        <div class="carousel-item active">
-                            <img class="d-block w-100" src={{ $event->url_img }} class='img'>
-                            <div style='padding:0 1rem'>
-                                
-                                <h5>{{ $event->title }}</h5>
-                                <p>{{ $event->description }}</p>
-                                    <p>{{ $event->fecha }}</p>
-                                    <p>{{ $event->hora }}</p>
-                            </div>
-                        </div>
-                    @endif
-                @endforeach
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
+<body class="container_home">
+    <h1 class="title">Home</h1>
+    <p class="subtitle"> Eventos destacados:</p>
 
-    <hr>
-    <h1>Lista de eventos</h1>
-    <ul>
-        {{-- @foreach ($events as $event)
-            <li>Title: {{ $event->title }}</li>
-        @endforeach --}}
-    </ul>
-    <a href="profile">Perfil</a>
-    <a href="events">Ver todos los eventos</a>
-    <a href="/events/tickets/myTickets">Mis tickets</a>
+    <div class="slideshow-container">
+
+        @foreach ($events as $event)
+            @if ($event->outstanding === 'yes')
+                <div class="mySlides fade" >
+                    <a href="/events/{{ $event->id }}">
+                        <img src={{ $event->url_img }} style="width:100%" >
+                        <h4 class="text">{{ $event->title }}</h4>
+                    </a>
+                </div>
+            @endif
+        @endforeach
+    </div>
+    <nav class="navbar">
+        <a href="/home">
+            <lord-icon src="https://cdn.lordicon.com/gmzxduhd.json" trigger="hover" class="iconNav"
+                colors="primary:#08D698,secondary:#08D698">
+            </lord-icon>
+        </a>
+        <a href="/events">
+            <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="hover" class="iconNav"
+                colors="primary:#ffffff,secondary:#ffffff">
+            </lord-icon>
+        </a>
+        <a href="/profile">
+            <lord-icon src="https://cdn.lordicon.com/imamsnbq.json" trigger="hover" class="iconNav"
+                colors="primary:#ffffff,secondary:#ffffff">
+            </lord-icon>
+        </a>
+        <a href="/events/tickets/myTickets">
+            <lord-icon src="https://cdn.lordicon.com/cjieiyzp.json" colors="primary:#ffffff,secondary:#ffffff" class="iconNav"
+                trigger="hover"> </lord-icon>
+        </a>
+    </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+
+    <script>
+        var slideIndex = 0;
+
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex >
+                slides.length) {
+                slideIndex = 1
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 5000);
+        }
     </script>
 </body>
 
