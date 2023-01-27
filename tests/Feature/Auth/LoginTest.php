@@ -30,9 +30,4 @@ class LoginTest extends TestCase
            $this->assertAuthenticatedAs($user);
     }
 
-
-
-
-
-
 }
