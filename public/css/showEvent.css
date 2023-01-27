@@ -1,0 +1,262 @@
+.navbar{
+    width:90%;
+    bottom: 0;
+    position:fixed;
+    height:10vh;
+    display: flex;
+    justify-content: space-between;
+    background-color:#0D0D0D ;
+    align-items: center;
+}
+.iconNav:hover{
+    scale:2;  
+}
+.iconNav:hover{
+    scale:1.5;  
+}
+
+.info_event{
+    margin:2rem 0;
+    display: grid;
+    grid-template-columns: auto;
+}
+.details_event{
+    padding:1rem 0;
+}
+.details_event>p{
+    margin:1rem 0 ;
+    
+}
+
+.btn_inscribirse{
+    padding: 1rem 1rem;
+    border-radius: 99vh;
+    border:2px solid #08D698;
+    background-color: transparent;
+    color:#08D698;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.btn_inscribirse:hover{
+    color: black;
+    background-color: #08D698;
+    cursor: pointer;
+
+}
+.btn_actualizar{
+    padding: 1rem 1rem;
+    border-radius: 99vh;
+    border:2px solid #08D698;
+    background-color: transparent;
+    color:#08D698;
+    margin-top: 1rem;
+}
+
+.btn_actualizar:hover{
+    color: black;
+    background-color: #08D698;
+    cursor: pointer;
+
+}
+
+@media (min-width:800px) {
+    .info_event{
+        grid-template-columns:50% 50%;
+        gap:2rem;
+    }
+    .details_event>p{
+        padding:0.3rem 0 ;
+    }
+    .details_event{
+        padding: 0;
+    }
+    .btn_inscribirse{
+        width:auto
+    }
+    .container_inputs{
+        display:grid;
+        grid-template-columns: 50% 50%;
+    }
+    .btn_delete{
+        width:auto
+    }
+    
+}
+.alert{
+    animation:alert 0.6s;
+    color:#D60846;
+}
+
+@keyframes alert {
+    0%{
+        transform: translateX(0px);
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: translateX(10px);
+        transform: rotate(5deg);
+    }
+    50%{
+        transform: rotate(-5deg);
+        transform: translateX(-10px);
+    }
+    100%{
+        transform: translateX(0px);
+        transform: rotate(0deg);
+        
+    }
+}
+
+.img_event{
+    width:100%;
+    max-width: 600px;
+}
+
+.form_edit{
+    width:100%;
+    margin:1rem 0 ;
+}
+
+.container_inputs{
+    flex-direction: column;
+    padding:1rem 0;
+}
+
+
+
+
+
+/* Formulario */
+.group 			  { 
+    position:relative; 
+    margin-bottom:45px; 
+  }
+  input 				{
+    color:white;
+
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:300px;
+    border:none;
+    border-bottom:1px solid #757575;
+  }
+  input:focus 		{ outline:none; }
+  
+  /* LABEL ======================================= */
+  label 				 {
+    color:#999; 
+    font-size:18px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:5px;
+    top:10px;
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+  }
+  
+  /* active state */
+  input:focus ~ label, input:valid ~ label 		{
+    top:-20px;
+    font-size:14px;
+    color:#5264AE;
+  }
+  
+  /* BOTTOM BARS ================================= */
+  .bar 	{ position:relative; display:block; width:300px; }
+  .bar:before, .bar:after 	{
+    content:'';
+    height:2px; 
+    width:0;
+    bottom:1px; 
+    position:absolute;
+    background:#5264AE; 
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+  }
+  .bar:before {
+    left:50%;
+  }
+  .bar:after {
+    right:50%; 
+  }
+  
+  /* active state */
+  input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width:50%;
+  }
+  
+  /* HIGHLIGHTER ================================== */
+  .highlight {
+    position:absolute;
+    height:60%; 
+    width:100px; 
+    top:25%; 
+    left:0;
+    pointer-events:none;
+    opacity:0.5;
+  }
+  
+  /* active state */
+  input:focus ~ .highlight {
+    -webkit-animation:inputHighlighter 0.3s ease;
+    -moz-animation:inputHighlighter 0.3s ease;
+    animation:inputHighlighter 0.3s ease;
+  }
+  
+  /* ANIMATIONS ================ */
+  @-webkit-keyframes inputHighlighter {
+      from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
+  @-moz-keyframes inputHighlighter {
+      from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
+  @keyframes inputHighlighter {
+      from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+  }
+
+
+  .input{
+    background-color: transparent;
+  }
+
+
+  /* BOTONES */
+
+  .btn_delete{
+    padding: 1rem 1rem;
+    border-radius: 99vh;
+    border:2px solid #D60846;
+    background-color: transparent;
+    color:#D60846;
+    margin-top: 1rem;
+}
+
+.btn_delete:hover{
+    color: black;
+    background-color: #D60846;
+    cursor: pointer; 
+}
+
+.btn_green{
+    padding: 1rem 1rem;
+    border-radius: 99vh;
+    border:2px solid #08D698;
+    background-color: transparent;
+    color:#08D698;
+    margin-top: 1rem;
+}
+
+.btn_green:hover{
+    color: black;
+    background-color: #08D698;
+    cursor: pointer; 
+}
+

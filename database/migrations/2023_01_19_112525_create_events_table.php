@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('url_img');
             $table->integer('max_participants');
             $table->string('outstanding');
+            $table->string('link');
             $table->date('fecha');
             $table->time('hora');
             $table->timestamps();
